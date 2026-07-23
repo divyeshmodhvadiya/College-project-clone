@@ -1,0 +1,553 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+
+
+
+:root {
+
+  --primary-blue: #2563eb;
+  --primary-blue-hover: #1d4ed8;
+
+  --primary-orange: #f97316;
+  --primary-orange-hover: #ea580c;
+
+  --text-dark: #0f172a;
+  --text-muted: #475569;
+
+  --transition-speed: 0.3s;
+
+}
+
+
+
+* {
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+
+
+html {
+
+  scroll-behavior: smooth;
+
+}
+
+
+
+body {
+
+  width: 100%;
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  font-family: "Poppins", sans-serif;
+
+  background:
+    linear-gradient(180deg,
+      #ffffff,
+      #f8fafc);
+
+}
+
+
+
+a {
+
+  text-decoration: none;
+
+}
+
+
+
+
+.container {
+
+  width: 100%;
+  max-width: 1280px;
+
+  margin: auto;
+
+  padding: 0 24px;
+
+}
+
+
+
+/* Navbar */
+
+.navbar {
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  height: 80px;
+
+  display: flex;
+
+  align-items: center;
+
+  z-index: 1000;
+
+  transition:
+
+    background .3s ease,
+
+    box-shadow .3s ease,
+
+    backdrop-filter .3s ease;
+
+}
+
+
+
+.navbar.scrolled {
+
+  background:
+
+    rgba(255, 255, 255, .78);
+
+  backdrop-filter:
+
+    blur(18px);
+
+  -webkit-backdrop-filter:
+
+    blur(18px);
+
+  box-shadow:
+
+    0 5px 15px rgba(15, 23, 42, 0.181);
+
+}
+
+
+
+
+
+.navbar-container {
+
+  display: grid;
+  grid-template-columns: 0.9fr 1fr auto;
+  gap: 10px;
+}
+
+
+
+
+/* Logo */
+
+
+.logo {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: var(--text-dark);
+
+  font-size: 1.55rem;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+}
+
+
+
+.logo svg {
+
+  flex-shrink: 0;
+
+}
+
+
+
+.logo span {
+
+  background:
+
+    linear-gradient(135deg,
+
+      var(--primary-blue),
+
+      var(--primary-orange));
+
+
+  background-clip: text;
+
+  -webkit-background-clip: text;
+
+  color: transparent;
+
+}
+
+
+
+
+/* Navigation */
+
+.nav-links {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 40px;
+
+  list-style: none;
+
+}
+
+
+
+.nav-links a {
+
+  position: relative;
+
+  display: inline-block;
+
+  padding: 8px 0;
+
+  color: var(--text-muted);
+
+  font-size: .95rem;
+
+  font-weight: 600;
+
+  transition: .3s ease;
+
+}
+
+
+
+.nav-links a::after {
+
+  content: "";
+
+  position: absolute;
+
+  bottom: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 3px;
+
+  border-radius: 20px;
+
+  background: var(--primary-blue);
+
+  transform: scaleX(0);
+
+  transform-origin: left;
+
+  transition: .3s ease;
+
+}
+
+
+
+.nav-links a:hover,
+
+.nav-links a.active {
+
+  color: var(--primary-blue);
+
+}
+
+
+
+.nav-links a:hover::after,
+
+.nav-links a.active::after {
+
+  transform: scaleX(1);
+
+}
+
+
+
+
+
+/* Call Button */
+
+
+.call-btn {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 11px 20px;
+
+  background: var(--primary-orange);
+
+  color: white;
+
+  border-radius: 12px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  box-shadow:
+
+    0 8px 20px rgba(249, 115, 22, .25);
+
+  transition: .3s ease;
+
+}
+
+
+
+.call-btn svg {
+
+  width: 20px;
+
+  height: 20px;
+
+}
+
+
+
+.call-btn:hover {
+
+  background:
+
+    var(--primary-orange-hover);
+
+  transform:
+
+    translateY(-3px);
+
+}
+
+
+
+
+
+/* Mobile Menu */
+
+
+.menu-toggle {
+
+  display: none;
+
+  border: none;
+
+  background: none;
+
+  cursor: pointer;
+
+  padding: 8px;
+
+}
+
+
+
+.menu-toggle span {
+
+  display: block;
+
+  width: 28px;
+
+  height: 3px;
+
+  margin: 5px;
+
+  background: var(--text-dark);
+
+  border-radius: 10px;
+
+  transition: .3s ease;
+
+}
+
+
+
+
+
+/* Mobile */
+
+@media(max-width:768px) {
+
+
+  .container {
+
+    padding: 0 18px;
+
+  }
+
+
+
+  .navbar {
+
+    height: 72px;
+
+  }
+
+
+
+  .menu-toggle {
+
+    display: block;
+
+    order: 3;
+
+  }
+
+
+
+  .nav-links {
+
+
+    position: absolute;
+
+
+    top: 72px;
+
+    left: 0;
+
+
+    width: 100%;
+
+
+    padding: 25px 20px;
+
+
+    display: flex;
+
+
+    flex-direction: column;
+
+
+    gap: 18px;
+
+
+    background:
+
+      rgba(255, 255, 255, .92);
+
+
+    backdrop-filter:
+
+      blur(20px);
+
+
+    -webkit-backdrop-filter:
+
+      blur(20px);
+
+
+    box-shadow:
+
+      0 15px 35px rgba(15, 23, 42, .12);
+
+
+    transform:
+
+      translateY(-120%);
+
+
+    opacity: 0;
+
+
+    visibility: hidden;
+
+
+    transition: .35s ease;
+
+  }
+
+
+
+  .nav-links.active {
+
+    transform:
+
+      translateY(0);
+
+
+    opacity: 1;
+
+
+    visibility: visible;
+
+  }
+
+
+
+  .nav-links a {
+
+    font-size: 1rem;
+
+  }
+
+
+
+  .call-btn {
+
+    display: none;
+
+  }
+
+
+
+  .logo {
+
+    font-size: 1.3rem;
+
+  }
+
+
+
+  .logo svg {
+
+    width: 22px;
+
+    height: 22px;
+
+  }
+
+
+}
+
+
+
+/* Small phones */
+
+@media(max-width:400px) {
+
+
+  .logo {
+
+    font-size: 1.15rem;
+
+  }
+
+
+  .container {
+
+    padding: 0 14px;
+
+  }
+
+
+}
